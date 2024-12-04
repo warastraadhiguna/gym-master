@@ -113,7 +113,7 @@
                     </svg>
                 </div> --}}
   <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
-    <img src="{{ asset('logo.jpg') }}" width="30%" class="img-fluid" alt="Logo">
+    <img src="{{ asset('logo.png') }}" class="img-fluid" alt="Logo">
   </div>
                 
   {{-- <div class="container mt-5">
