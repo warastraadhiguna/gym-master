@@ -129,7 +129,7 @@
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">Member Package</label>
                                 <select id="single-select2" name="member_package_id" class="form-control" required>
-                                    <option>
+                                    <option value="">
                                         <- Choose ->
                                     </option>
                                     @foreach ($memberPackage as $item)
@@ -153,7 +153,7 @@
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">Method Payment</label>
                                 <select id="single-select3" name="method_payment_id" class="form-control">
-                                    <option>
+                                    <option value="">
                                         <- Choose ->
                                     </option>
                                     @foreach ($methodPayment as $item)
@@ -168,7 +168,7 @@
                                     <label for="exampleFormControlInput1" class="form-label">Fitness
                                         Consultant</label>
                                     <select id="single-select4" name="fc_id" class="form-control">
-                                        <option>
+                                        <option value="">
                                             <- Choose ->
                                         </option>
                                         @foreach ($fitnessConsultant as $item)

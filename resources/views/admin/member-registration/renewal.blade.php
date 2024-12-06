@@ -83,7 +83,7 @@
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Gender</label>
                                     <select name="gender" class="form-control" aria-label="Default select example">
-                                        <option disabled selected value>
+                                        <option disabled selected value="">
                                             <- Choose ->
                                         </option>
                                         <option value="Male">Male</option>
@@ -131,7 +131,7 @@
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">Member Package</label>
                                 <select name="member_package_id" class="form-control" id="single-select">
-                                    <option>
+                                    <option value="">
                                         <- Choose ->
                                     </option>
                                     @foreach ($memberPackage as $item)
@@ -157,7 +157,7 @@
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">Method Payment</label>
                                 <select name="method_payment_id" class="form-control" id="single-select5">
-                                    <option>
+                                    <option value="">
                                         <- Choose ->
                                     </option>
                                     @foreach ($methodPayment as $item)
@@ -172,7 +172,7 @@
                                     <label for="exampleFormControlInput1" class="form-label">Fitness
                                         Consultant</label>
                                     <select id="single-select3" name="fc_id" class="form-control" required>
-                                        <option>
+                                        <option value="">
                                             <- Choose ->
                                         </option>
                                         @foreach ($fitnessConsultant as $item)

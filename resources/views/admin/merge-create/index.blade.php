@@ -172,7 +172,7 @@
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Member Package</label>
                             <select id="single-select2" name="member_package_id" class="form-control" required>
-                                <option>
+                                <option value="">
                                     <- Choose ->
                                 </option>
                                 @foreach ($memberPackage as $item)

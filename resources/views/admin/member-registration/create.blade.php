@@ -44,7 +44,7 @@
                                 <label for="exampleFormControlInput1" class="form-label">Gender</label>
                                 <select name="gender" class="form-control" aria-label="Default select example"
                                     required>
-                                    <option disabled selected value>
+                                    <option disabled selected value="">
                                         <- Choose ->
                                     </option>
                                     <option value="Male">Male</option>
@@ -77,7 +77,7 @@
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">Member Package</label>
                                 <select id="single-select" name="member_package_id" class="form-control">
-                                    <option>
+                                    <option value="">
                                         <- Choose ->
                                     </option>
                                     @foreach ($memberPackage as $item)
@@ -104,7 +104,7 @@
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">Method Payment</label>
                                 <select id="single-select4" name="method_payment_id" class="form-control">
-                                    <option>
+                                    <option value="">
                                         <- Choose ->
                                     </option>
                                     @foreach ($methodPayment as $item)
@@ -117,7 +117,7 @@
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">Sold By</label>
                                 <select id="single-select2" name="fc_id" class="form-control">
-                                    <option>
+                                    <option value="">
                                         <- Choose ->
                                     </option>
                                     @foreach ($fitnessConsultant as $item)
@@ -132,7 +132,7 @@
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">Refferal Name</label>
                                 <select id="single-select3" name="refferal_id" class="form-control">
-                                    <option>
+                                    <option value="">
                                         <- Choose ->
                                     </option>
                                     @foreach ($referralName as $item)

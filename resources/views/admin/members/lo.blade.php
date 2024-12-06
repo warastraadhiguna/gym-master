@@ -79,7 +79,7 @@
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">PT By</label>
                         <select id="single-select4" name="lo_pt_by" class="form-control" required>
-                            <option>
+                            <option value="">
                                 <- Choose ->
                             </option>
                             @foreach ($personalTrainer as $item)
