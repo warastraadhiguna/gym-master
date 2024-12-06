@@ -27,8 +27,8 @@
                             <div class="col-xl-6" id="born">
                                 <div class="mb-3">
                                     <label class="form-label">Born</label>
-                                    <input type="text" name="born" value="{{ old('born') }}"
-                                        class="form-control mdate-custom" placeholder="Choose born date">
+                                    <input type="date" name="born" value="{{ old('born') }}"
+                                        class="form-control" placeholder="Choose born date">
                                 </div>
                             </div>
                             <div class="col-xl-6" id="member_code">
@@ -146,8 +146,8 @@
                         <div class="col-xl-6">
                             <div class="mb-3">
                                 <label class="form-label">Start Date</label>
-                                <input type="text" name="start_date" value="{{ old('start_date') }}"
-                                    class="form-control editDate mdate-custom3" required autocomplete="off">
+                                <input type="date" name="start_date" value="{{ old('start_date') }}"
+                                    class="form-control" required autocomplete="off">
                             </div>
                         </div>
                         <input type="hidden" class="form-control" name="start_time"

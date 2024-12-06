@@ -5,10 +5,8 @@ namespace App\Http\Controllers\Staff;
 use App\Exports\DetailSellingLeadGeneralReportExport;
 use App\Exports\DetailSellingPTReportExport;
 use App\Exports\LOReportExport;
-use App\Exports\MemberCheckInReport;
 use App\Exports\MemberCheckInReportExport;
 use App\Exports\MemberPTCheckInReportExport;
-use App\Exports\ReportMemberPTCheckInExport;
 use App\Exports\StaffExport;
 use App\Exports\TotalSellingLeadGeneralReportExport;
 use App\Exports\TotalSellingPTReportExport;
@@ -17,12 +15,10 @@ use App\Models\Member\Member;
 use App\Models\Staff\ClassInstructor;
 use App\Models\Staff\PersonalTrainer;
 use App\Models\Trainer\CheckInTrainerSession;
-use App\Models\Trainer\Trainer;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 use Barryvdh\DomPDF\Facade\Pdf;
-use GuzzleHttp\Psr7\Request;
 
 class StaffController extends Controller
 {
@@ -55,7 +51,7 @@ class StaffController extends Controller
     public function ptTotalReport()
     {
         $fromDate       = Request()->input('fromDate');
-        $fromDate       = $fromDate ?  DateFormat($fromDate) : NowDate();
+        $fromDate       = $fromDate ? DateFormat($fromDate) : NowDate();
 
         $toDate         = Request()->input('toDate');
         $toDate         = $toDate ? DateFormat($toDate) : NowDate();
@@ -170,7 +166,7 @@ class StaffController extends Controller
     public function ptDetailReport()
     {
         $fromDate   = Request()->input('fromDate');
-        $fromDate  = $fromDate ?  DateFormat($fromDate) : NowDate();
+        $fromDate  = $fromDate ? DateFormat($fromDate) : NowDate();
 
         $toDate     = Request()->input('toDate');
         $toDate = $toDate ? DateFormat($toDate) : NowDate();
@@ -307,13 +303,6 @@ class StaffController extends Controller
 
     public function reportMemberCheckIn()
     {
-        // $fromDate   = Request()->input('fromDate');
-        // $fromDate  = $fromDate ?  DateFormat($fromDate) : NowDate();
-
-        // $toDate     = Request()->input('toDate');
-        // $toDate = $toDate ? DateFormat($toDate) : NowDate();
-        // $pdf = Request()->input('pdf');
-
         $fromDate   = Request()->input('fromDate');
         $toDate     = Request()->input('toDate');
         $memberId   = Request()->input('memberId');
@@ -358,13 +347,6 @@ class StaffController extends Controller
                 // ->get();
                 ->paginate(4);
         }
-
-        // if ($pdf && $pdf == '1') {
-        //     $pdf = Pdf::loadView('admin/gym-report/report-member-checkin', [
-        //         'result'   => $results,
-        //     ]);
-        //     return $pdf->stream('Report-member-checkin-' . $fromDate . '-' . $toDate . '.pdf');
-        // }
 
         if ($excel && $excel == "1") {
             return Excel::download(new MemberCheckInReportExport(), 'Member-checkin-report, ' . $fromDate . ' to ' . $toDate . '.xlsx');
@@ -458,7 +440,7 @@ class StaffController extends Controller
     public function csDetailReportMemberCheckIn()
     {
         $fromDate   = Request()->input('fromDate');
-        $fromDate  = $fromDate ?  DateFormat($fromDate) : NowDate();
+        $fromDate  = $fromDate ? DateFormat($fromDate) : NowDate();
 
         $toDate     = Request()->input('toDate');
         $toDate = $toDate ? DateFormat($toDate) : NowDate();
@@ -498,7 +480,7 @@ class StaffController extends Controller
     public function csTotalReportPT()
     {
         $fromDate   = Request()->input('fromDate');
-        $fromDate  = $fromDate ?  DateFormat($fromDate) : NowDate();
+        $fromDate  = $fromDate ? DateFormat($fromDate) : NowDate();
 
         $toDate     = Request()->input('toDate');
         $toDate = $toDate ? DateFormat($toDate) : NowDate();
@@ -538,7 +520,7 @@ class StaffController extends Controller
     public function csDetailReportPT()
     {
         $fromDate   = Request()->input('fromDate');
-        $fromDate  = $fromDate ?  DateFormat($fromDate) : NowDate();
+        $fromDate  = $fromDate ? DateFormat($fromDate) : NowDate();
 
         $toDate     = Request()->input('toDate');
         $toDate = $toDate ? DateFormat($toDate) : NowDate();
@@ -578,7 +560,7 @@ class StaffController extends Controller
     public function fcTotalReportMemberCheckIn()
     {
         $fromDate   = Request()->input('fromDate');
-        $fromDate   = $fromDate ?  DateFormat($fromDate) : NowDate();
+        $fromDate   = $fromDate ? DateFormat($fromDate) : NowDate();
         $fcId       = Request()->input('fcId');
 
         $toDate     = Request()->input('toDate');
@@ -716,7 +698,7 @@ class StaffController extends Controller
     public function fcTotalReportPT()
     {
         $fromDate   = Request()->input('fromDate');
-        $fromDate  = $fromDate ?  DateFormat($fromDate) : NowDate();
+        $fromDate  = $fromDate ? DateFormat($fromDate) : NowDate();
         $fcId       = Request()->input('fcId');
 
         $toDate     = Request()->input('toDate');

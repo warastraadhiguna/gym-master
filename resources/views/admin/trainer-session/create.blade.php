@@ -18,7 +18,7 @@
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Member Name</label>
                             <select id="single-select5" name="member_id" class="form-control">
-                                <option disabled selected value>
+                                <option disabled selected  value="">
                                     <- Choose ->
                                 </option>
                                 @foreach ($members as $item)
@@ -34,7 +34,7 @@
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Trainer Name</label>
                             <select id="single-select6" name="trainer_id" class="form-control">
-                                <option disabled selected value>
+                                <option disabled selected  value="">
                                     <- Choose ->
                                 </option>
                                 @foreach ($personalTrainers as $item)
@@ -49,7 +49,7 @@
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Trainer Package</label>
                             <select id="single-select2" name="trainer_package_id" class="form-control">
-                                <option disabled selected value>
+                                <option disabled selected  value="">
                                     <- Choose ->
                                 </option>
                                 @foreach ($trainerPackages as $item)
@@ -65,15 +65,15 @@
                     <div class="col-xl-6">
                         <div class="mb-3">
                             <label class="form-label">Start Date</label>
-                            <input type="text" name="start_date" value="{{ old('start_date') }}"
-                                class="form-control editDate mdate-custom3" placeholder="Choose start date" required>
+                            <input type="date" name="start_date" value="{{ old('start_date') }}"
+                                class="form-control" placeholder="Choose start date" required>
                         </div>
                     </div>
                     <div class="col-xl-6" id="method_payment">
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Method Payment</label>
                             <select id="single-select3" name="method_payment_id" class="form-control" required>
-                                <option>
+                                <option value="">
                                     <- Choose ->
                                 </option>
                                 @foreach ($methodPayment as $item)
@@ -87,7 +87,7 @@
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">Fitness Consultant</label>
                                 <select id="single-select4" name="fc_id" class="form-control" required>
-                                    <option>
+                                    <option value="">
                                         <- Choose ->
                                     </option>
                                     @foreach ($fitnessConsultant as $item)

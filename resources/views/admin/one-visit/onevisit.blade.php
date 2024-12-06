@@ -37,11 +37,11 @@
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Member Package</label>
                             <select id="single-select3" name="member_package_id" class="form-control">
-                                <option>
+                                <option  value="">
                                     <- Choose ->
                                 </option>
                                 @foreach ($memberPackage as $item)
-                                    <option value="{{ $item->id }}">{{ $item->package_name }}</option>
+                                    <option value="{{ $item->id }}" {{ old('member_package_id') == $item->id ? 'selected' : '' }}>{{ $item->package_name }}</option>
                                 @endforeach
                             </select>
                             {{-- <select id="single-select2" name="member_package_id" class="form-control" required>
@@ -56,11 +56,11 @@
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Method Payment</label>
                             <select id="single-select3" name="method_payment_id" class="form-control">
-                                <option>
+                                <option  value="">
                                     <- Choose ->
                                 </option>
                                 @foreach ($methodPayment as $item)
-                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                    <option value="{{ $item->id }}"   {{ old('method_payment_id') == $item->id ? 'selected' : '' }}>{{ $item->name }}</option>
                                 @endforeach
                             </select>
                         </div>

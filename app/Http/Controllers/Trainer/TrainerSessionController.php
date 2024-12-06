@@ -153,6 +153,7 @@ class TrainerSessionController extends Controller
         $startTime = date('H:i:s', strtotime('00:00:00'));
 
         $data['start_date'] =  $data['start_date'] . ' ' .  $startTime;
+        // dd($data['start_date']);
         $dateTime = new \DateTime($data['start_date']);
         $data['start_date'] = $dateTime->format('Y-m-d H:i:s');
         unset($startTime);
@@ -468,7 +469,7 @@ class TrainerSessionController extends Controller
     public function history()
     {
         $fromDate   = Request()->input('fromDate');
-        $fromDate  = $fromDate ?  DateFormat($fromDate) : NowDate();
+        $fromDate  = $fromDate ? DateFormat($fromDate) : NowDate();
 
         $toDate     = Request()->input('toDate');
         $toDate = $toDate ? DateFormat($toDate) : NowDate();

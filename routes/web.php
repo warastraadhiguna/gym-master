@@ -37,6 +37,9 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('/')->namespace('Admin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
+    Route::get('/dashboard2', [DashboardController::class, 'dashboard2'])->name('dashboard2');
+
+
     Route::get('/add-data', [MergeCreateDataController::class, 'index'])->name('add-data');
     Route::get('/1-day-visit-lead', [MergeCreateDataController::class, 'create'])->name('one-day-visit-lead');
     Route::get('/openMembers', [MergeCreateDataController::class, 'openMembers'])->name('openMembers');

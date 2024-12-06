@@ -44,7 +44,7 @@ class MergeCreateDataController extends Controller
     public function create()
     {
         $memberPackage = MemberPackage::where('days', '1')->get();
-        // dd($memberPackage);
+        // dd(Member::get());
         $data = [
             'title'             => '1 Day Visit Lead',
             'members'           => Member::get(),
@@ -64,6 +64,8 @@ class MergeCreateDataController extends Controller
     public function openMembers()
     {
         $members = Member::where('status', 'one_day_visit')->get();
+
+        // $members = Member::get();
 
         return response()->json($members);
     }

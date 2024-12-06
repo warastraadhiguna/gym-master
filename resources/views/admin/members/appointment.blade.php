@@ -44,18 +44,11 @@
                                 id="exampleFormControlInput1" autocomplete="off" readonly>
                         </div>
                     </div>
-                    {{-- <div class="col-xl-6">
-                        <div class="mb-3">
-                            <label class="form-label">Appointment Date</label>
-                            <input type="text" name="appointment_date" value="{{ old('appointment_date') }}"
-                                class="form-control editDate mdate-custom3" placeholder="Choose start date">
-                        </div>
-                    </div> --}}
                     <div class="col-xl-6">
                         <div class="mb-3">
                             <label class="form-label">Date of Birth</label>
-                            <input type="text" name="appointment_date" value="{{ old('appointment_date') }}"
-                                class="form-control mdate-custom" placeholder="Choose born date">
+                            <input type="date" name="appointment_date" value="{{ old('appointment_date') }}"
+                                class="form-control" placeholder="Choose born date">
                         </div>
                     </div>
                     {{-- <div class="col-xl-6">

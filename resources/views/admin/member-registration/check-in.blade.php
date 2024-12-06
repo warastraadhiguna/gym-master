@@ -55,7 +55,7 @@
                             </div>
                             <input type="hidden" name="start_date"
                                 value="{{ DateFormat($item->start_date, 'YYYY-MM-DD') }}"
-                                class="form-control mdate-custom" required autocomplete="off" readonly>
+                                class="form-control" required autocomplete="off" readonly>
                             <div class="col-xl-6">
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Periode Cuti</label>

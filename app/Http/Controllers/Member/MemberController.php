@@ -135,7 +135,7 @@ class MemberController extends Controller
 
     public function store(Request $request)
     {
-        // 
+        //
     }
 
     public function edit(string $id)
@@ -452,7 +452,7 @@ class MemberController extends Controller
     {
         $item = Member::find($id);
         // dd($item);
-        
+
         $data['lo_end'] = Carbon::now()->tz('Asia/Jakarta');
 
         $item->update($data);

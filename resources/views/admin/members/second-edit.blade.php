@@ -42,9 +42,9 @@
                     <div class="col-xl-6" id="born">
                         <div class="mb-3">
                             <label class="form-label">Date of Birth</label>
-                            <input type="text" name="born"
-                                value="{{ old('born', DateFormat($members->born, 'DD MMMM YYYY')) }}"
-                                class="form-control mdate-custom" placeholder="Choose born date" id="mdate">
+                            <input type="date" name="born"
+                                value="{{ old('born', DateFormat($members->born, 'YYYY-MM-DD')) }}"
+                                class="form-control" placeholder="Choose born date" id="mdate">
                         </div>
                     </div>
                     <div class="col-xl-6">
@@ -122,7 +122,7 @@
                             <label for="formFile" class="form-label">Photo</label>
                             <input class="form-control" type="file" name="photos" onchange="loadFile(event)"
                                 id="formFile">
-                            <img src="{{ Storage::url($members->photos) }}" class="lazyload mt-2"
+                            <img src="{{ $members->photos?  Storage::url($members->photos) : "" }}" class="lazyload mt-2"
                                 style="width: 100px;" alt="image">
                         </div>
                         <img id="output" class="img-fluid mt-2 mb-4" width="100" />

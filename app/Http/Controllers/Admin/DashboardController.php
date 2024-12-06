@@ -322,6 +322,6 @@ class DashboardController extends Controller
             'totalPersonalTrainers'             => PersonalTrainer::count(),
             'content'                           => 'admin/dashboard/index'
         ];
-        return view('admin.layouts.wrapper-dashboard', $data);
+        return view('admin.layouts.wrapper', $data);
     }
 }

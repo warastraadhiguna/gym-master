@@ -24,7 +24,7 @@
 
     <!-- FAVICONS ICON -->
     <link rel="shortcut icon" type="{{ asset('admingym/image/png') }}"
-        href="{{ asset('admingym/images/gym/logo.jpg') }}">
+        href="{{ asset('admingym/images/gym/logo.jpg') }}">        
     <link href="{{ asset('admingym/vendor/wow-master/css/libs/animate.css') }}" rel="stylesheet">
     <link href="{{ asset('admingym/vendor/bootstrap-select/dist/css/bootstrap-select.min.css') }}" rel="stylesheet">
     <link rel="stylesheet"
@@ -65,7 +65,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
         integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    {{-- <link rel="stylesheet" href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"> --}}
 </head>
 
 <body>

@@ -52,21 +52,21 @@
                         <div class="col-xl-6" id="parentInput1">
                             <div class="mb-3">
                                 <label class="form-label">Start Date</label>
-                                <input type="text" name="start_date" id="input1"
-                                    value="{{ old('start_date', DateFormat($memberRegistrations->start_date, 'DD MMMM YYYY')) }}"
-                                    class="form-control mdate-custom" required autocomplete="off">
+                                <input type="date" name="start_date" id="input1"
+                                    value="{{ old('start_date',  DateFormat($memberRegistrations->start_date, 'YYYY-MM-DD')) }}"
+                                    class="form-control" required autocomplete="off">
                             </div>
                         </div>
                         <div class="col-xl-6" id="parentInput2">
                             <div class="mb-3">
                                 <label class="form-label">Expired Date</label>
-                                <input type="text" name="expired_date" id="input2"
-                                    value="{{ old('expired_date', DateFormat($memberRegistrations->expired_date, 'DD MMMM YYYY')) }}"
-                                    class="form-control mdate-custom" required autocomplete="off">
+                                <input type="date" name="expired_date" id="input2"
+                                    value="{{ old('expired_date', DateFormat($memberRegistrations->expired_date, 'YYYY-MM-DD')) }}"
+                                    class="form-control" required autocomplete="off">
                             </div>
                         </div>
-                        <input type="hidden" id="expired_time" class="form-control editTime" name="expired_time"
-                            autocomplete="off">
+                        {{-- <input type="hidden" id="expired_time" class="form-control editTime" name="expired_time"
+                            autocomplete="off"> --}}
                         <div class="col-xl-6">
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">Method Payment</label>

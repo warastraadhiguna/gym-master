@@ -153,79 +153,80 @@ class MemberRegistrationController extends Controller
     public function memberSecondStore(Request $request)
     {
         DB::beginTransaction();
-        try {
-            $data = $request->validate([
-                'full_name'             => 'required',
-                'phone_number'          => 'required',
-                'status'                => 'required',
-                'nickname'              => 'nullable',
-                'born'                  => 'nullable',
-                'email'                 => 'nullable',
-                'ig'                    => 'nullable',
-                'emergency_contact'     => 'nullable',
-                'ec_name'               => 'nullable',
-                'gender'                => 'nullable',
-                'address'               => 'nullable',
-                'photos'                => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-                'fc_candidate_id'       => 'nullable',
-                'cancellation_note'     => 'nullable',
-                'lo_is_used'            => 'nullable',
-                'lo_start_date'         => 'nullable',
-                'lo_days'               => 'nullable',
-                'lo_pt_by'              => 'nullable',
-                'start_date'            => 'required_if:status,sell',
-                'description'           => 'nullable',
-                'card_number' => [
-                    'nullable',
-                    function ($attribute, $value, $fail) {
-                        if ($value) {
-                            $exists = Member::where('card_number', $value)->exists();
-                            if ($exists) {
-                                $fail('The card number has already been taken.');
-                            }
+        $data = $request->validate([
+            'full_name'             => 'required'.($request->status == 'one_day_visit' ? '' : '|unique:members'),
+            'phone_number'          => 'required'.($request->status == 'one_day_visit' ? '' : '|unique:members'),
+            'status'                => 'required',
+            'nickname'              => 'nullable',
+            'born'                  => 'nullable',
+            'email'                 => 'nullable',
+            'ig'                    => 'nullable',
+            'emergency_contact'     => 'nullable',
+            'ec_name'               => 'nullable',
+            'gender'                => 'nullable',
+            'address'               => 'nullable',
+            'photos'                => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'fc_candidate_id'       => 'nullable',
+            'cancellation_note'     => 'nullable',
+            'lo_is_used'            => 'nullable',
+            'lo_start_date'         => 'nullable',
+            'lo_days'               => 'nullable',
+            'lo_pt_by'              => 'nullable',
+            'start_date'            => 'required_if:status,sell',
+            'description'           => 'nullable',
+            'card_number' => [
+                'nullable',
+                function ($attribute, $value, $fail) {
+                    if ($value) {
+                        $exists = Member::where('card_number', $value)->exists();
+                        if ($exists) {
+                            $fail('The card number has already been taken.');
                         }
                     }
-                ],
-                'member_code' => [
-                    'nullable',
-                    function ($attribute, $value, $fail) {
-                        if ($value) {
-                            $exists = Member::where('member_code', $value)->exists();
-                            if ($exists) {
-                                $fail('The member code has already been taken.');
-                            }
-                        }
-                    }
-                ],
-            ]);
-
-            if ($request->status == 'sell') {
-
-                $fc = Auth::user()->id;
-                if (Auth::user()->role == 'FC') {
-                    $data += $request->validate([
-                        'member_package_id'     => 'required|exists:member_packages,id',
-                        'start_date'            => 'required',
-                        'method_payment_id'     => 'required|exists:method_payments,id',
-                        // 'fc_id'                 => Auth::user()->id,
-                    ]);
-                    $data['fc_id'] = $fc;
-                } else {
-                    $data += $request->validate([
-                        'member_package_id'     => 'required|exists:member_packages,id',
-                        'start_date'            => 'required',
-                        'method_payment_id'     => 'required|exists:method_payments,id',
-                        'fc_id'                 => 'required|exists:users,id',
-                    ]);
                 }
+            ],
+            'member_code' => [
+                'nullable',
+                function ($attribute, $value, $fail) {
+                    if ($value) {
+                        $exists = Member::where('member_code', $value)->exists();
+                        if ($exists) {
+                            $fail('The member code has already been taken.');
+                        }
+                    }
+                }
+                        ],
+        ]);
 
-                // $data += $request->validate([
-                //     'member_package_id'     => 'required|exists:member_packages,id',
-                //     'start_date'            => 'required',
-                //     'method_payment_id'     => 'required|exists:method_payments,id',
-                //     'fc_id'                 => 'required|exists:users,id',
-                // ]);
+        $fc = Auth::user()->id;
 
+        if ($request->status == 'sell') {
+            if (Auth::user()->role == 'FC') {
+                $data += $request->validate([
+                    'member_package_id' => 'required|exists:member_packages,id',
+                    'start_date' => 'required',
+                    'method_payment_id' => 'required|exists:method_payments,id',
+                    // 'fc_id'                 => Auth::user()->id,
+                ]);
+                $data['fc_id'] = $fc;
+            } else {
+                $data += $request->validate([
+                    'member_package_id' => 'required|exists:member_packages,id',
+                    'start_date' => 'required',
+                    'method_payment_id' => 'required|exists:method_payments,id',
+                    'fc_id' => 'required|exists:users,id',
+                ]);
+            }
+        } elseif ($request->status == 'one_day_visit') {
+            $data += $request->validate([
+                'start_date' => 'nullable',
+                'member_package_id' => 'required|exists:member_packages,id',
+                'method_payment_id' => 'required|exists:method_payments,id',
+            ]);
+        }
+
+        try {
+            if ($request->status == 'sell') {
                 if ($request->hasFile('photos')) {
                     if ($request->photos != null) {
                         $realLocation = "storage/" . $request->photos;
@@ -251,7 +252,11 @@ class MemberRegistrationController extends Controller
                 $startTime = date('H:i:s', strtotime('00:00:00'));
 
                 $data['start_date'] =  $data['start_date'] . ' ' .  $startTime;
+
+                // dd($data['start_date']);
+
                 $dateTime = new \DateTime($data['start_date']);
+
                 $data['start_date'] = $dateTime->format('Y-m-d H:i:s');
                 unset($startTime);
 
@@ -290,12 +295,6 @@ class MemberRegistrationController extends Controller
                     'days'
                 ])));
             } elseif ($request->status == 'one_day_visit') {
-                $data += $request->validate([
-                    'start_date'            => 'nullable',
-                    'member_package_id'     => 'required|exists:member_packages,id',
-                    'method_payment_id'     => 'required|exists:method_payments,id',
-                ]);
-
                 $package = MemberPackage::findOrFail($data['member_package_id']);
                 $data['package_price'] = $package->package_price;
 
@@ -376,7 +375,9 @@ class MemberRegistrationController extends Controller
             return redirect()->back()->with('success', 'Member Registration Added Successfully');
         } catch (Exception $e) {
             DB::rollback();
-            throw $e;
+            // throw $e;
+            return redirect()->back()->with('error', $e->getMessage());
+
         }
     }
 
@@ -616,6 +617,9 @@ class MemberRegistrationController extends Controller
 
         $startTime = date('H:i:s', strtotime('00:00:00'));
         $data['start_date'] = $data['start_date'] . ' ' .  $startTime;
+
+        // dd($data['start_date']);
+
         $dateTime = new \DateTime($data['start_date']);
         $data['start_date'] = $dateTime->format('Y-m-d H:i:s');
         // dd($data['start_date']);
@@ -1082,7 +1086,7 @@ class MemberRegistrationController extends Controller
     public function history()
     {
         $fromDate   = Request()->input('fromDate');
-        $fromDate  = $fromDate ?  DateFormat($fromDate) : NowDate();
+        $fromDate  = $fromDate ? DateFormat($fromDate) : NowDate();
 
         $toDate     = Request()->input('toDate');
         $toDate = $toDate ? DateFormat($toDate) : NowDate();

@@ -144,8 +144,8 @@
                         <div class="col-xl-6" id="start_date">
                             <div class="mb-3">
                                 <label class="form-label">Start Date</label>
-                                <input type="text" name="start_date" value="{{ old('start_date') }}"
-                                    class="form-control editDate mdate-custom3" placeholder="Choose start date">
+                                <input type="date" name="start_date" value="{{ old('start_date') }}"
+                                    class="form-control" placeholder="Choose start date">
                             </div>
                         </div>
                         <input type="hidden" class="form-control editTime" name="start_time" autocomplete="off">

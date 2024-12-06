@@ -68,17 +68,17 @@
                     <div class="col-xl-6" id="parentInput1">
                         <div class="mb-3">
                             <label class="form-label">Start Date</label>
-                            <input type="text" name="start_date" id="input1"
-                                value="{{ old('start_date', DateFormat($trainerSession->start_date, 'DD MMMM YYYY')) }}"
-                                class="form-control mdate-custom">
+                            <input type="date" name="start_date" id="input1"
+                                value="{{ old('start_date', DateFormat($trainerSession->start_date, 'YYYY-MM-DD')) }}"
+                                class="form-control">
                         </div>
                     </div>
                     <div class="col-xl-6" id="parentInput2">
                         <div class="mb-3">
                             <label class="form-label">Expired Date</label>
-                            <input type="text" name="expired_date" id="input2"
-                                value="{{ old('expired_date', DateFormat($trainerSessions->expired_date, 'DD MMMM YYYY')) }}"
-                                class="form-control mdate-custom" required autocomplete="off">
+                            <input type="date" name="expired_date" id="input2"
+                                value="{{ old('expired_date', DateFormat($trainerSessions->expired_date, 'YYYY-MM-DD')) }}"
+                                class="form-control" required autocomplete="off">
                         </div>
                     </div>
                     <div class="col-xl-6">

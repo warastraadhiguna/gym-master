@@ -312,7 +312,7 @@
     });
 </script>
 
-<script>
+{{-- <script>
     document.addEventListener("DOMContentLoaded", function() {
         // var defaultDate = new Date();
         var formattedDate = ('0' + getDate()).slice(-2) + '-' + toLocaleString(
@@ -325,9 +325,9 @@
             .slice(-2);
         document.getElementsByClassName("changeDate")[0].value = defaultTime;
     });
-</script>
+</script> --}}
 
-<script>
+{{-- <script>
     document.addEventListener("DOMContentLoaded", function() {
         var defaultDate = new Date();
         var formattedDate = ('0' + defaultDate.getDate()).slice(-2) + '-' + defaultDate.toLocaleString(
@@ -340,10 +340,10 @@
             .slice(-2);
         document.getElementsByClassName("editTime")[0].value = defaultTime;
     });
-</script>
+</script> --}}
 
 {{-- Expired Time --}}
-<script>
+{{-- <script>
     // Get the current date and time in the Indonesia timezone
     var currentDate = new Date();
     var options = {
@@ -355,9 +355,9 @@
 
     // Assign the formatted current time to an input field or display it wherever needed
     document.getElementById("expired_time").value = formattedDefaultTime;
-</script>
+</script> --}}
 
-<script>
+{{-- <script>
     function showForm(formId) {
         document.getElementById('memberForm').style.display = 'none';
         document.getElementById('memberRegistrationForm').style.display = 'none';
@@ -372,7 +372,7 @@
 
         document.getElementById('memberForm').style.display = 'block';
     });
-</script>
+</script> --}}
 
 <script>
     $('#checkIn2').on('shown.bs.modal', function() {
@@ -381,23 +381,19 @@
 </script>
 
 <script>
+if (window.location.pathname === '/add-data') {
     document.addEventListener('DOMContentLoaded', function() {
         var sellRadio = document.getElementById('sell');
         var missedGuestRadio = document.getElementById('missed');
-
+        
         var elementsToShow = ['born', 'member_code', 'card_number', 'gender', 'status', 'address',
             'description', 'formFile',
             'output', 'nickname', 'email', 'ig', 'emergency_contact', 'ec_name', 'member_package',
             'start_date',
             'method_payment', 'fitness_consultant',
         ];
-        var elementsToHide = ['born', 'member_code', 'card_number', 'gender', 'status', 'address',
-            'description', 'formFile',
-            'output', 'nickname', 'email', 'ig', 'emergency_contact', 'ec_name', 'member_package',
-            'start_date',
-            'method_payment', 'fitness_consultant',
-        ];
-
+        var elementsToHide = ['cancellation-note', 'candidateFC'];
+        // handleRadioChange()
         function toggleElements(elements, displayStyle) {
             elements.forEach(function(elementId) {
                 var element = document.querySelector('[id="' + elementId + '"]');
@@ -408,10 +404,10 @@
         }
 
         function handleRadioChange() {
-            if (sellRadio.checked) {
+            if (missedGuestRadio.checked) {
                 toggleElements(elementsToShow, 'block');
                 toggleElements(elementsToHide, 'none');
-            } else if (missedGuestRadio.checked) {
+            } else if (sellRadio.checked) {
                 toggleElements(elementsToShow, 'none');
                 toggleElements(elementsToHide, 'block');
             }
@@ -421,40 +417,10 @@
         missedGuestRadio.addEventListener('change', handleRadioChange);
 
         toggleElements(elementsToShow, 'none');
-        toggleElements(elementsToHide, 'none');
+        // toggleElements(elementsToHide, 'none');
+        handleRadioChange();
     });
-</script>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var sellRadio = document.getElementById('sell');
-        var missedGuestRadio = document.getElementById('missed');
-        var cancellationNote = document.getElementById('cancellation-note');
-        var candidateFC = document.getElementById('candidateFC');
-
-        function toggleElement(element, displayStyle) {
-            if (element) {
-                element.style.display = displayStyle;
-            }
-        }
-
-        function handleRadioChange() {
-            if (sellRadio.checked) {
-                toggleElement(cancellationNote, 'block');
-                toggleElement(candidateFC, 'block');
-            } else if (missedGuestRadio.checked) {
-                toggleElement(cancellationNote, 'none');
-                toggleElement(candidateFC, 'none');
-            }
-        }
-
-        sellRadio.addEventListener('change', handleRadioChange);
-        missedGuestRadio.addEventListener('change', handleRadioChange);
-
-        // Initial state
-        toggleElement(cancellationNote, 'block');
-        toggleElement(candidateFC, 'block');
-    });
+}
 </script>
 
 </body>
