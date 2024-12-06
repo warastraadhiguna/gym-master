@@ -9,7 +9,7 @@
                 </div>
                 <button type="button" onclick="reloadPage()" class="btn btn-info mx-1" data-bs-toggle="modal">
                     Filter
-                </button>
+                </button> 
                 {{-- <button type="button" onclick="reloadPage(1)" class="btn btn-outline-info" data-bs-toggle="modal">
                     PDF
                 </button> --}}

@@ -13,7 +13,7 @@
     @endif
     @if (session('memberCode'))
         <p>{{ session('memberCode') }}</p>
-    @endif
+    @endif  
     @if (session('phoneNumber'))
         <p>{{ session('phoneNumber') }}</p>
     @endif

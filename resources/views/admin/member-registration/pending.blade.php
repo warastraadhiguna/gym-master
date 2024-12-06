@@ -13,7 +13,7 @@
                 <div class="table-responsive full-data">
                     <table class="table-responsive-lg table display dataTablesCard student-tab dataTable no-footer"
                         id="myTable">
-                        <thead>
+                        <thead>   
                             <tr>
                                 <th>No</th>
                                 <th>Image</th>

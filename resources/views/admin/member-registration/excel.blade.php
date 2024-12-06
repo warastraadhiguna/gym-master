@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 
-<body>
+<body> 
     <div class="table-responsive full-data">
         <table class="table-responsive-lg table display dataTablesCard student-tab dataTable no-footer" id="myTable">
             <thead>

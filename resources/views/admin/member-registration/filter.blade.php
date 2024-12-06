@@ -4,7 +4,7 @@
             <div class="col-xl-12">
                 <div class="page-title flex-wrap justify-content-between">
                     <a href="{{ route('member-active.index') }}" class="btn btn-primary">Refresh</a>
-                    <form action="{{ route('member-active-filter') }}" class="text-right" method="GET">
+                    <form action="{{ route('member-active-filter') }}" class="text-right" method="GET"> 
                         @csrf
                         <div class="d-flex align-items-center">
                             <div class="col-md-4 d-flex align-items-center">

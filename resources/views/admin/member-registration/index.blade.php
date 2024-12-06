@@ -14,7 +14,7 @@
         background-size: contain;
         animation: fireworks 5s linear infinite;
     }
-
+  
     .birthdayy {
         color: rgb(0, 0, 0);
     }

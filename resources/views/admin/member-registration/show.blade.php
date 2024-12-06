@@ -17,7 +17,7 @@
                             @endif
                         </tr>
                         @if ($status == 'sell')
-                            <tr>
+                            <tr>   
                                 <th><b>Member Code</th>
                                 <th style="border-right: 2px solid rgb(212, 212, 212);">
                                     : {{ $memberRegistration->members->member_code }}</th>
