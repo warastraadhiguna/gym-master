@@ -6,9 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Member\Member;
 use App\Models\Member\MemberPackage;
 use App\Models\MethodPayment;
-use App\Models\Refferal;
-use App\Models\Sold;
-use App\Models\SourceCode;
+// use App\Models\Refferal;
+// use App\Models\Sold;
+// use App\Models\SourceCode;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -45,10 +45,10 @@ class MemberListController extends Controller
             'member'                => $member,
             'request'               => $request,
             'memberPackage'         => MemberPackage::get(),
-            'sourceCode'            => SourceCode::get(),
+            // 'sourceCode'            => SourceCode::get(),
             'methodPayment'         => MethodPayment::get(),
-            'soldBy'                => Sold::get(),
-            'referralName'          => Refferal::get(),
+            // 'soldBy'                => Sold::get(),
+            // 'referralName'          => Refferal::get(),
             'content'               => 'admin/gym-report/member-list/list'
         ];
 
@@ -61,10 +61,10 @@ class MemberListController extends Controller
             'title'                 => 'Report Member List',
             'member'                => Member::where('status', 'Active')->get(),
             'memberPackage'         => MemberPackage::get(),
-            'sourceCode'            => SourceCode::get(),
+            // 'sourceCode'            => SourceCode::get(),
             'methodPayment'         => MethodPayment::get(),
-            'soldBy'                => Sold::get(),
-            'referralName'          => Refferal::get(),
+            // 'soldBy'                => Sold::get(),
+            // 'referralName'          => Refferal::get(),
             'content'               => 'admin/gym-report/member-list/all-data'
         ];
 
