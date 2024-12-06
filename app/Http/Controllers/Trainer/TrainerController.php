@@ -9,7 +9,7 @@ use App\Models\Staff\FitnessConsultant;
 use App\Models\Staff\PersonalTrainer;
 use App\Models\Trainer\Trainer;
 use App\Models\Trainer\TrainerPackage;
-use App\Models\Trainer\TrainerTransactionType;
+// use App\Models\Trainer\TrainerTransactionType;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,7 +22,7 @@ class TrainerController extends Controller
             'title'                     => 'Trainer List',
             'trainers'                  => Trainer::get(),
             'members'                   => Member::get(),
-            'trainerTransactionType'    => TrainerTransactionType::get(),
+            // 'trainerTransactionType'    => TrainerTransactionType::get(),
             'trainerPackage'            => TrainerPackage::get(),
             'methodPayment'             => MethodPayment::get(),
             'fc'                        => FitnessConsultant::get(),
@@ -40,7 +40,7 @@ class TrainerController extends Controller
         $data = [
             'title'                     => 'New Trainer',
             'members'                   => Member::get(),
-            'trainerTransactionType'    => TrainerTransactionType::get(),
+            // 'trainerTransactionType'    => TrainerTransactionType::get(),
             'trainerPackage'            => TrainerPackage::get(),
             'methodPayment'             => MethodPayment::get(),
             'fc'                        => FitnessConsultant::get(),
