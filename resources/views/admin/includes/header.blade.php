@@ -185,7 +185,7 @@
                             onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
                             <i class="fa fa-sign-out fa-lg" aria-hidden="true"></i>
-                        </a>
+                        </a> 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf
                         </form>

@@ -15,7 +15,6 @@ class MemberPackageCategoryController extends Controller
             'memberPackageCategory' => MemberPackageCategory::get(),
             'content'               => 'admin/member-package-category/index'
         ];
-
         return view('admin.layouts.wrapper', $data);
     }
 

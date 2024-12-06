@@ -1,6 +1,4 @@
-        <!--**********************************
-            Chat box start
-        ***********************************-->
+
         <div class="chatbox">
             <div class="chatbox-close"></div>
             <div class="custom-tab-1">

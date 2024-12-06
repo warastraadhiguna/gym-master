@@ -15,7 +15,6 @@ class PersonalTrainerListController extends Controller
         $data = [
             'content'   => 'admin/gym-report/personal-trainer-list/index'
         ];
-
         return view('admin.layouts.wrapper', $data);
     }
 

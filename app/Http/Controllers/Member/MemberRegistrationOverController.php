@@ -150,7 +150,6 @@ class MemberRegistrationOverController extends Controller
                 'status'
             )
             ->get();
-
         $pdf = Pdf::loadView('admin/member-registration-over/pdf', [
             'memberRegistrationsOver'   => $memberRegistrationsOver,
         ])->setPaper('a4', 'landscape');

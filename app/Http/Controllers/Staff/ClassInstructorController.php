@@ -8,16 +8,6 @@ use Illuminate\Http\Request;
 
 class ClassInstructorController extends Controller
 {
-    public function index()
-    {
-        // $data = [
-        //     'classInstructor'   => ClassInstructor::get(),
-        //     'content'           => 'admin/staff/class-instructor/index'
-        // ];
-
-        // return view('admin.layouts.wrapper', $data);
-    }
-
     public function create()
     {
         //

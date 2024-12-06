@@ -23,11 +23,10 @@ class MissedGuestController extends Controller
         if ($excel && $excel == "1") {
             return Excel::download(new MissedGuestExport(), 'Missed Guest, ' . $fromDate . ' to ' . $toDate . '.xlsx');
         }
-        
+
         $auth = Auth::user()->id;
         $authRole = Auth::user()->role;
-
-        if ($authRole == "FC"){
+        if ($authRole == "FC") {
             $data = [
                 'title'             => 'Missed Guest',
                 'members'           => Member::where('fc_candidate_id', $auth)->where('status', 'missed_guest')->get(),
@@ -66,10 +65,10 @@ class MissedGuestController extends Controller
             'member_id'         => 'nullable|exists:members,id',
             'appointment_date'  => 'nullable'
         ]);
-        
+
         $time = '00:00:00';
         $data['appointment_date'] = Carbon::parse($data['appointment_date'])->format('Y-m-d' . ' ' . $time);
-        
+
         $data['member_id'] = $members->id;
         // dd($data['member_id']);
         Appointment::create($data);

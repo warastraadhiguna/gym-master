@@ -1,7 +1,7 @@
 <div class="row">
     <div class="card">
         <div class="card-body">
-            <form action="{{ route('leads.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('leads.store') }}" method="POST" enctype="multipart/form-data">   
                 @csrf
                 @if ($errors->any())
                     <div class="alert alert-danger">

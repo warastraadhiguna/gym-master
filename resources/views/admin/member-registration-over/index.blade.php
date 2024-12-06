@@ -11,7 +11,7 @@
                     <div>
                         @if (!empty($memberRegistrationsOver))
                             <?php
-                            $earliestDate = \Carbon\Carbon::parse($memberRegistrationsOver->min('earliest_created_at'))->format('Y-m-d');
+                            $earliestDate = \Carbon\Carbon::parse($memberRegistrationsOver->min('earliest_created_at'))->format('Y-m-d'); 
                             $latestDate = \Carbon\Carbon::parse($memberRegistrationsOver->max('latest_created_at'))->format('Y-m-d');
                             ?>
                             <div class="date-section">

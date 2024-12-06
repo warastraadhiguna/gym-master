@@ -3,7 +3,7 @@
         <div class="card-body">
             <form action="{{ route('buddy-referral.update', $buddyReferral->id) }}" method="POST"
                 enctype="multipart/form-data">
-                @method('PUT')
+                @method('PUT')   
                 @csrf
                 @if ($errors->any())
                     <div class="alert alert-danger">

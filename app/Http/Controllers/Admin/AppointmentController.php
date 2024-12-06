@@ -71,7 +71,6 @@ class AppointmentController extends Controller
             'fc_id'                 => 'exists:fitness_consultants,id',
             'cs_id'                 => 'exists:customer_services,id'
         ]);
-
         $item->update($data);
         return redirect()->route('appointment.index')->with('message', 'Appointment Updated Successfully');
     }

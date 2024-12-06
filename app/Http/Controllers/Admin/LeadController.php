@@ -20,7 +20,6 @@ class LeadController extends Controller
             'customerServices'      => CustomerService::get(),
             'content'               => 'admin/lead/index'
         ];
-
         return view('admin.layouts.wrapper', $data);
     }
 

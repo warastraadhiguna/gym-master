@@ -10,16 +10,6 @@ use Illuminate\Support\Facades\Auth;
 
 class FitnessConsultantController extends Controller
 {
-    public function index()
-    {
-        //
-    }
-
-    public function create()
-    {
-        //
-    }
-
     public function store(Request $request)
     {
         $data = $request->validate([

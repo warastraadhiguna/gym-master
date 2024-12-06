@@ -8,16 +8,6 @@ use Illuminate\Http\Request;
 
 class PTLeaderController extends Controller
 {
-    public function index()
-    {
-        //
-    }
-
-    public function create()
-    {
-        //
-    }
-
     public function store(Request $request)
     {
         $data = $request->validate([

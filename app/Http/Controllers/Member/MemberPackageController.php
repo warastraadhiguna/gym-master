@@ -9,7 +9,6 @@ use App\Models\Member\MemberPackage;
 use App\Models\Member\MemberPackageCategory;
 use App\Models\Member\MemberPackageType;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class MemberPackageController extends Controller
@@ -87,7 +86,8 @@ class MemberPackageController extends Controller
         // $MemberPackage = MemberPackage::onlyTrashed()->find($id)->forceDelete();
 
         try {
-            MemberPackage::onlyTrashed()->find($id)->forceDelete();;
+            MemberPackage::onlyTrashed()->find($id)->forceDelete();
+            ;
             return redirect()->back()->with('success', 'Member Package Deleted Permanently Successfully');
         } catch (\Throwable $th) {
             return redirect()->back()->with('errorr', 'Gagal menghapus paket member');

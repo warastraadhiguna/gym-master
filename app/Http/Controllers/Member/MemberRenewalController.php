@@ -26,8 +26,6 @@ class MemberRenewalController extends Controller
                 'description' => 'nullable',
             ]);
 
-            // Tambahkan logika tambahan di sini jika diperlukan
-
             $data['member_id'] = $memberRegistration->member_id;
             $data['user_id'] = Auth::id();
 

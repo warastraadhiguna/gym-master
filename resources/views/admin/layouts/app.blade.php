@@ -24,7 +24,6 @@
     {{-- Floating --}}
     @include('admin.includes.sidebar')
 
-    {{-- Page Content --}}
     @yield('content')
 
     {{-- Script --}}

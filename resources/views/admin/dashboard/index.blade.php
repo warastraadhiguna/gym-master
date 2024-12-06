@@ -11,8 +11,8 @@
 @endforeach
 <div class="row">
     <div class="col-xl-3 col-sm-3 col-md-6">
-        <div class="card">
-            <div class="card-body">
+        <div class="card"> 
+            <div class="card-body">  
                 <ul class="d-flex align-items-center">
                     <li class="icon-box icon-box-lg bg-warning me-3">
                         <svg width="40" height="40" viewBox="0 0 40 40" fill="none"

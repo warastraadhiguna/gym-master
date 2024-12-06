@@ -20,7 +20,6 @@ class BuddyReferralController extends Controller
             'customerServices'      => CustomerService::get(),
             'content'               => 'admin/buddy-referral/index'
         ];
-
         return view('admin.layouts.wrapper', $data);
     }
 

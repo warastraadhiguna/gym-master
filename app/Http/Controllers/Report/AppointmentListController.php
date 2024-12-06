@@ -22,7 +22,6 @@ class AppointmentListController extends Controller
             'customerServices'      => CustomerService::get(),
             'content'               => 'admin/gym-report/appointment-list/index'
         ];
-
         return view('admin.layouts.wrapper', $data);
     }
 

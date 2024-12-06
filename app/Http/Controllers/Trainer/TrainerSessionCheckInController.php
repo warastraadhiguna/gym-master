@@ -6,11 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Member\Member;
 use App\Models\Member\MemberRegistration;
 use App\Models\Trainer\CheckInTrainerSession;
-use App\Models\Trainer\LGT;
 use App\Models\Trainer\TrainerSession;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class TrainerSessionCheckInController extends Controller

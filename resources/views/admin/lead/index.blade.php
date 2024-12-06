@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-xl-12">
         <div class="row">
-            <div class="col-xl-12">
+            <div class="col-xl-12">  
                 <div class="page-title flex-wrap">
                     <div class="input-group search-area mb-md-0 mb-3">
                         <input type="text" class="form-control" placeholder="Search here...">

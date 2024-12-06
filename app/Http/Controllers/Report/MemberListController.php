@@ -20,7 +20,6 @@ class MemberListController extends Controller
         $data = [
             'content'               => 'admin/gym-report/member-list/index'
         ];
-
         return view('admin.layouts.wrapper', $data);
     }
 

@@ -4,11 +4,7 @@ namespace App\Http\Controllers\Trainer;
 
 use App\Exports\LGTExport;
 use App\Http\Controllers\Controller;
-use App\Models\Member\Member;
-use App\Models\Trainer\LGT;
 use App\Models\Trainer\TrainerSession;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 use Barryvdh\DomPDF\Facade\Pdf;
 

@@ -3,15 +3,12 @@
 namespace App\Http\Controllers\Trainer;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\TrainerStoreRequest;
 use App\Models\Member\Member;
 use App\Models\MethodPayment;
 use App\Models\Staff\FitnessConsultant;
 use App\Models\Staff\PersonalTrainer;
 use App\Models\Trainer\Trainer;
 use App\Models\Trainer\TrainerPackage;
-use App\Models\Trainer\TrainerTransaction;
-use App\Models\Trainer\TrainerTransactionDetail;
 use App\Models\Trainer\TrainerTransactionType;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -94,7 +91,7 @@ class TrainerController extends Controller
 
     public function edit(string $id)
     {
-        // 
+        //
     }
 
     public function update(Request $request, string $id)

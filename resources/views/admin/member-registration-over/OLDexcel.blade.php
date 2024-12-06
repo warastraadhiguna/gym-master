@@ -13,7 +13,7 @@
         <table class="table-responsive-lg table display dataTablesCard student-tab dataTable no-footer" id="myTable">
             <thead>
                 <tr>
-                    <th>No</th>
+                    <th>No</th> 
                     <th>Full Name</th>
                     <th>Phone Number</th>
                     <th>Date</th>

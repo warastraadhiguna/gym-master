@@ -15,7 +15,6 @@ class MemberPaymentController extends Controller
             'memberPayment' => Member::get(),
             'content'       => 'admin/member-payment/index'
         ];
-
         return view('admin.layouts.wrapper', $data);
     }
 }

@@ -13,7 +13,6 @@ class MemberPrintCardController extends Controller
     {
         // dd($id);
         $member = Member::find($id);
-
         $pdf = PDF::loadView('admin/member/print-member-card', [
             'member'               => $member,
         ]);

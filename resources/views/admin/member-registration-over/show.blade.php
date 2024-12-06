@@ -12,7 +12,7 @@
                         <tr>
                             <th><b>Member Code</th>
                             <th>{{ $memberRegistration->member_code }}</th>
-                        </tr>
+                        </tr> 
                         <tr>
                             <th><b>Gender</b></th>
                             <th>{{ $memberRegistration->gender }}</th>

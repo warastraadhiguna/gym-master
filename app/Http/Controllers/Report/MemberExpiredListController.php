@@ -20,7 +20,6 @@ class MemberExpiredListController extends Controller
         $data = [
             'content'               => 'admin/gym-report/member-expired-list/index'
         ];
-
         return view('admin.layouts.wrapper', $data);
     }
 

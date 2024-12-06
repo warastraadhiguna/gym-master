@@ -24,13 +24,6 @@
     {{-- Floating --}}
     @include('admin.includes.sidebar')
 
-    {{-- Notify --}}
-    {{-- @include('sweetalert::alert')
-    @include('notify::messages')
-    <x:notify-messages />
-    @notifyJs --}}
-
-    {{-- Page Content --}}
     @yield('content')
 
     {{-- Footer --}}

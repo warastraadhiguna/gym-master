@@ -15,7 +15,6 @@ class MemberPackageTypeController extends Controller
             'memberPackageType' => MemberPackageType::get(),
             'content'           => 'admin/member-package-type/index'
         ];
-
         return view('admin.layouts.wrapper', $data);
     }
 

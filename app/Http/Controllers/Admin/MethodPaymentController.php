@@ -15,7 +15,6 @@ class MethodPaymentController extends Controller
             'paymentMethod' => MethodPayment::get(),
             'content'       => 'admin/payment-method/index'
         ];
-
         return view('admin.layouts.wrapper', $data);
     }
 

@@ -4,9 +4,7 @@ namespace App\Http\Controllers\Trainer;
 
 use App\Exports\TrainerSessionExpiredExport;
 use App\Http\Controllers\Controller;
-use App\Models\Member\Member;
 use App\Models\Trainer\TrainerSession;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Maatwebsite\Excel\Facades\Excel;

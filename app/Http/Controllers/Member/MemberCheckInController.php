@@ -33,10 +33,6 @@ class MemberCheckInController extends Controller
             return redirect()->back()->with('errorr', $memberRegistration[0]->member_name . ' sedang cuti!!');
         }
 
-        // if (!$memberRegistration) {
-        //     return redirect()->back()->with('error', 'Member active not found or has ended');
-        // }
-
         $memberPhoto    = $memberRegistration[0]->photos;
         $memberName     = $memberRegistration[0]->member_name;
         $nickName       = $memberRegistration[0]->nickname;
