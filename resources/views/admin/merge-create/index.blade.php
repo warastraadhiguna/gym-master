@@ -171,7 +171,7 @@
                     <div class="col-xl-6" id="member_package">
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Member Package</label>
-                            <select id="single-select2" name="member_package_id" class="form-control" required>
+                            <select id="single-select2" name="member_package_id" class="form-control">
                                 <option value="">
                                     <- Choose ->
                                 </option>
@@ -237,8 +237,3 @@
     </div>
 </div>
 
-<script>
-    document.getElementById('submitButton').addEventListener('click', function() {
-        document.getElementById('addMemberForm').submit();
-    });
-</script>
