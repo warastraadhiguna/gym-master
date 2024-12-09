@@ -6,6 +6,7 @@ use App\Exports\MemberActiveExport;
 use App\Exports\MemberPendingExport;
 use App\Exports\OneVisitExport;
 use App\Http\Controllers\Controller;
+use App\Models\Company;
 use App\Models\Member\LeaveDay;
 use App\Models\Member\Member;
 use App\Models\Member\MemberPackage;
@@ -28,12 +29,18 @@ class MemberRegistrationController extends Controller
         $fromDate   = Request()->input('fromDate');
         $toDate     = Request()->input('toDate');
 
+        $startDateFrom     = Request()->input('start_date_from');
+        $startDateTo   = Request()->input('start_date_to');
+
+        $expiredDateFrom     = Request()->input('expired_date_from');
+        $expiredDateTo   = Request()->input('expired_date_to');
+
         $excel = Request()->input('excel');
         if ($excel && $excel == "1") {
             return Excel::download(new MemberActiveExport(), 'member-active, ' . $fromDate . ' to ' . $toDate . '.xlsx');
         }
 
-        $memberRegistrations = MemberRegistration::getActiveList();
+        $memberRegistrations = MemberRegistration::getActiveList('', '', $startDateFrom, $startDateTo, $expiredDateFrom, $expiredDateTo);
 
         $birthdayMessages = [
             0 => [],
@@ -55,6 +62,10 @@ class MemberRegistrationController extends Controller
             'content'               => 'admin/member-registration/index',
             'idCodeMaxCount'        => $idCodeMaxCount,
             'birthdayMessages'      => $birthdayMessages,
+            'startDateFrom'         => $startDateFrom,
+            'startDateTo'           => $startDateTo,
+            'expiredDateFrom'         => $expiredDateFrom,
+            'expiredDateTo'           => $expiredDateTo,
         ];
 
         return view('admin.layouts.wrapper', $data);
@@ -222,9 +233,9 @@ class MemberRegistrationController extends Controller
                 'start_date' => 'nullable',
                 'member_package_id' => 'required|exists:member_packages,id',
                 'method_payment_id' => 'required|exists:method_payments,id',
+                'personal_trainer_id'           => 'nullable',
             ]);
         }
-
         try {
             if ($request->status == 'sell') {
                 if ($request->hasFile('photos')) {
@@ -243,7 +254,7 @@ class MemberRegistrationController extends Controller
                 }
 
                 $data['born'] = Carbon::parse($data['born'])->format('Y-m-d');
-
+                $company = Company::first();
                 $package = MemberPackage::findOrFail($data['member_package_id']);
                 $data['package_price'] = $package->package_price;
 
@@ -282,7 +293,7 @@ class MemberRegistrationController extends Controller
 
                 $data['member_id'] = $newMember->id;
 
-                $createMemberRegistration = MemberRegistration::create(array_intersect_key($data, array_flip([
+                MemberRegistration::create(array_intersect_key($data, array_flip([
                     'member_id',
                     'member_package_id',
                     'start_date',
@@ -311,7 +322,8 @@ class MemberRegistrationController extends Controller
                 if ($existingMember) {
                     $data['member_id'] = $existingMember->id;
 
-                    MemberRegistration::create(array_intersect_key($data, array_flip([
+
+                    $dataToInsert = array_intersect_key($data, array_flip([
                         'member_id',
                         'member_package_id',
                         'start_date',
@@ -320,8 +332,16 @@ class MemberRegistrationController extends Controller
                         'description',
                         'package_price',
                         'admin_price',
-                        'days'
-                    ])));
+                        'days',
+                    ]));
+
+                    // Tambahkan personal_trainer_id jika tidak null atau tidak kosong
+                    if (!empty($data['personal_trainer_id'])) {
+                        $dataToInsert['personal_trainer_id'] = $data['personal_trainer_id'];
+                    }
+
+                    MemberRegistration::create($dataToInsert);
+
                 } else {
                     // Create new member
                     $newMember = Member::create(array_intersect_key($data, array_flip([
@@ -333,7 +353,8 @@ class MemberRegistrationController extends Controller
                     $data['member_id'] = $newMember->id;
 
                     // Create member registration
-                    MemberRegistration::create(array_intersect_key($data, array_flip([
+
+                    $dataToInsert = array_intersect_key($data, array_flip([
                         'member_id',
                         'member_package_id',
                         'start_date',
@@ -342,8 +363,17 @@ class MemberRegistrationController extends Controller
                         'description',
                         'package_price',
                         'admin_price',
-                        'days'
-                    ])));
+                        'days',
+                    ]));
+
+                    // Tambahkan 'personal_trainer_id' jika tidak null atau kosong
+                    if (!empty($data['personal_trainer_id'])) {
+                        $dataToInsert['personal_trainer_id'] = $data['personal_trainer_id'];
+                    }
+
+                    // Simpan data ke database
+                    MemberRegistration::create($dataToInsert);
+
                 }
             } else {
                 $fc = Auth::user()->role;
@@ -728,7 +758,10 @@ class MemberRegistrationController extends Controller
                 $data['start_date'] = $dateTime->format('Y-m-d H:i:s');
                 unset($startTime);
 
-                $data['admin_price'] = $package->admin_price;
+                $data['admin_price'] = 0;
+                //user request
+                // $data['admin_price'] = $package->admin_price;
+
                 $data['days'] = $package->days;
                 $data['member_id'] = $memberRegistration->member_id;
 

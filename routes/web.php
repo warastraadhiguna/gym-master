@@ -147,10 +147,6 @@ Route::prefix('/')->namespace('Admin')->middleware(['auth', 'admin'])->group(fun
     Route::get('cuti/{id}', [MemberRegistrationController::class, 'cuti'])->name('cuti');
     Route::put('stopLeaveDays', [MemberRegistrationController::class, 'stopLeaveDays'])->name('stopLeaveDays');
     Route::get('renewal/{id}', [MemberRegistrationController::class, 'renewal'])->name('renewal');
-    // Route::put('renewal/{id}', [MemberRegistrationController::class, 'renewMember'])->name('memberRenewal');
-    // Route::post('renewal/store', [MemberRegistrationController::class, 'renewMemberRegistration'])->name('renewMemberRegistration');
-
-    // Route::resource('renewal', '\App\Http\Controllers\Member\MemberRenewalController');
 
     Route::resource('missed-guest', '\App\Http\Controllers\Member\MissedGuestController');
 

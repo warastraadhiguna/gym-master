@@ -21,7 +21,7 @@
                                 <th>Number Of Session</th>
                                 <th>Number Of Days</th>
                                 <th>Package Price</th>
-                                <th>Package Type</th>
+                                {{-- <th>Package Type</th> --}}
                                 <th>Admin Price</th>
                                 <th>Description</th>
                                 <th>Staff</th>
@@ -45,9 +45,9 @@
                                     <td>
                                         <h6>{{ formatRupiah($item->package_price) }}</h6>
                                     </td>
-                                    <td>
+                                    {{-- <td>
                                         <h6>{{ $item->status == 'LGT' ? 'LGT' : 'Non LGT' }}</h6>
-                                    </td>
+                                    </td> --}}
                                     <td>
                                         <h6>{{ formatRupiah($item->admin_price) }}</h6>
                                     </td>

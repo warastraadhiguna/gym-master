@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Company;
 use App\Models\Member\Member;
 use App\Models\Member\MemberPackage;
 use App\Models\Member\MemberRegistration;
@@ -34,7 +35,6 @@ class MergeCreateDataController extends Controller
             'trainerSession'    => TrainerSession::all(),
             'personalTrainers'  => PersonalTrainer::get(),
             'trainerPackages'   => TrainerPackage::get(),
-
             'content'           => 'admin/merge-create/index'
         ];
 
@@ -55,6 +55,7 @@ class MergeCreateDataController extends Controller
             // 'memberPackage'         => MemberPackage::find(35),
             'memberPackage'         => $memberPackage,
             'methodPayment'         => MethodPayment::all(),
+            'personalTrainers'  => PersonalTrainer::get(),
             'content'           => 'admin/one-visit/onevisit'
         ];
 

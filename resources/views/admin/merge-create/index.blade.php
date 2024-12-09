@@ -228,6 +228,14 @@
                                 placeholder="Enter Description">{{ old('description') }}</textarea>
                         </div>
                     </div>
+                    {{-- <div class="col-xl-6" id="registration_payment">
+                        <div class="mb-3">
+                            <label for="exampleFormControlTextarea1" class="form-label text-primary">
+                                Registration Payment
+                            </label>
+                            <input class="form-control" name='registration_payment' value="{{ formatRupiah($company->registration_payment,'') }}" readonly/>
+                        </div>
+                    </div>                     --}}
                 </div>
                 <div class="d-flex justify-content-between">
                     <button type="submit" class="btn btn-primary">Save</button>

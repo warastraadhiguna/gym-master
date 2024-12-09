@@ -66,7 +66,7 @@
                                     placeholder="Enter Description">{{ old('description') }}</textarea>
                             </div>
                         </div>
-                        <div class="col-xl-6 mt-4">
+                        {{-- <div class="col-xl-6 mt-4">
                             <div class="mb-3">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="status" value=""
@@ -76,7 +76,7 @@
                                     </label>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <div class="modal-footer">

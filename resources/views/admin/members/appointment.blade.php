@@ -70,8 +70,3 @@
     </div>
 </div>
 
-<script>
-    document.getElementById('submitButton').addEventListener('click', function() {
-        document.getElementById('addMemberForm').submit();
-    });
-</script>

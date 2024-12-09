@@ -74,6 +74,22 @@
                                 placeholder="Enter Description">{{ old('description') }}</textarea>
                         </div>
                     </div>
+                    <div class="col-xl-6">
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">Trainer Name</label>
+                            <select id="single-select6" name="personal_trainer_id" class="form-control">
+                                <option disabled selected  value="">
+                                    <- Choose ->
+                                </option>
+                                @foreach ($personalTrainers as $item)
+                                    <option value="{{ $item->id }}" {{ old('personal_trainer_id') == $item->id ? 'selected' : '' }}>
+                                        {{ $item->full_name }} | {{ $item->phone_number }} | {{ $item->gender }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
                     <input class="form-check-input" type="hidden" name="status" value="one_day_visit">
                     <div class="d-flex justify-content-between">
                         <button type="submit" id="btnSubmit" class="btn btn-primary">Save</button>
@@ -115,12 +131,6 @@
         </div>
     </div>
 </div>
-
-<script>
-    document.getElementById('submitButton').addEventListener('click', function() {
-        document.getElementById('addMemberForm').submit();
-    });
-</script>
 
 <script>
     function openMembers(source) {

@@ -42,7 +42,7 @@
                 <li>
                     <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
                         <i class="material-symbols-outlined">person</i>
-                        <span class="nav-text">Member CheckIn</span>
+                        <span class="nav-text">Member Reg</span>
                     </a>
                     <ul aria-expanded="false">
                         <li><a href="{{ route('member-active.index') }}">Member Active</a></li>
@@ -56,7 +56,7 @@
             <li>
                 <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
                     <i class="material-symbols-outlined">person</i>
-                    <span class="nav-text">PT</span>
+                    <span class="nav-text">PT Reg</span>
                 </a>
                 <ul aria-expanded="false">
                     <li><a href="{{ route('trainer-session.create') }}">PT Registration</a></li>
@@ -64,7 +64,7 @@
                         <li><a href="{{ route('trainer-session.index') }}">PT Active</a></li>
                         <li><a href="{{ route('trainer-session-pending') }}">PT Pending</a></li>
                         <li><a href="{{ route('trainer-session-over.index') }}">PT Expired</a></li>
-                        <li><a href="{{ route('lgt') }}">LGT</a></li>
+                        {{-- <li><a href="{{ route('lgt') }}">LGT</a></li> --}}
                         <li><a href="{{ route('pt-history') }}">History</a></li>
                     @endif
                 </ul>
@@ -75,24 +75,24 @@
                     <span class="nav-text">Report</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="{{ route('lo-report') }}">LO</a></li>
+                    {{-- <li><a href="{{ route('lo-report') }}">LO</a></li> --}}
                     <li><a href="{{ route('report-member-checkin') }}">Member Check In</a></li>
                     <li><a href="{{ route('report-member-pt-checkin') }}">PT Check In</a></li>
                     <li>
                         <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">Lead</a>
                         <ul aria-expanded="false">
                             <li>
-                                <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">General</a>
+                                <a class="has-arrow ms-3" href="javascript:void(0);" aria-expanded="false">General</a>
                                 <ul aria-expanded="false">
-                                    <li><a href="{{ route('fc-total-report-member-checkin') }}">Total</a></li>
-                                    <li><a href="{{ route('fc-detail-report-member-checkin') }}">Detail</a></li>
+                                    <li><a class="ms-5" href="{{ route('fc-total-report-member-checkin') }}">Total</a></li>
+                                    <li><a class="ms-5" href="{{ route('fc-detail-report-member-checkin') }}">Detail</a></li>
                                 </ul>
                             </li>
                             <li>
-                                <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">PT Selling</a>
+                                <a class="has-arrow ms-3" href="javascript:void(0);" aria-expanded="false">PT Selling</a>
                                 <ul aria-expanded="false">
-                                    <li><a href="{{ route('fc-total-report-pt') }}">Total</a></li>
-                                    <li><a href="{{ route('fc-detail-report-pt') }}">Detail</a></li>
+                                    <li><a class="ms-5" href="{{ route('fc-total-report-pt') }}">Total</a></li>
+                                    <li><a class="ms-5" href="{{ route('fc-detail-report-pt') }}">Detail</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -101,7 +101,7 @@
             </li>
             @if (Auth::check() && Auth::user()->role == 'ADMIN')
                 <li>
-                    <a href="{{ route('staff.index') }}" aria-expanded="false">
+                    <a href="{{ route('staff.index', ['page' => 'cs']) }}" aria-expanded="false">
                         <i class="material-symbols-outlined">person</i>
                         <span class="nav-text">Staff List</span>
                     </a>

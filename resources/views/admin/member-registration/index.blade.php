@@ -51,14 +51,25 @@
         <div class="row">
             <div id="filteredDataContainer"></div>
             <div class="col-xl-12">
-                <div class="page-title flex-wrap justify-content-between">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#checkIn2"
-                        id="checkInButton">Input Card Number</button>
-                    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Download Excel
-                    </button>
+                <div class="page-title d-flex justify-content-between align-items-center">
+                    <div class="d-flex">
+                        <!-- Button kedua -->
+                        <button type="button" class="btn btn-secondary me-2" data-bs-toggle="modal" data-bs-target="#filterModal">
+                            Filter Setting
+                        </button>                        
+                        <!-- Button pertama -->
+                        <button type="button" class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#checkIn2"
+                            id="checkInButton">Input Card Number</button>
+
+                    </div>
+                    <div>
+                        <!-- Button ketiga -->
+                        <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Download Excel
+                        </button>
+                    </div>
                 </div>
-            </div>
+            </div>          
             @foreach ($birthdayMessages as $key => $messages)
                 @if (!empty($messages))
                     @foreach ($messages as $memberId => $memberName)
@@ -209,56 +220,6 @@
                                         @php
                                             $now = \Carbon\Carbon::now()->tz('asia/jakarta');
                                         @endphp
-                                        {{-- @if ($idCodeMaxCount - $item->id_code_count == 0)
-                                            @if (Auth::user()->role == 'ADMIN')
-                                                <a href="{{ route('resetCheckIn', $item->member_id) }}"
-                                                    class="btn light btn-warning btn-xs mb-1 btn-block">Reset Check In
-                                                    ?</a>
-                                            @else
-                                                <button type="button"
-                                                    class="btn light btn-warning btn-xs mb-1 btn-block"
-                                                    data-bs-toggle="popover" data-bs-title="Check In tanpa kartu"
-                                                    data-bs-content="Member ini sudah check in tanpa kartu sebanyak 3 kali, untuk reset check in tanpa kartu silahkan hubungi admin">Klik
-                                                    Disini</button>
-                                            @endif
-                                        @else
-                                            @if ($item->leave_day_status == 'Freeze')
-                                                <a class="btn light btn-info btn-xs mb-1 btn-block">Freeze</a>
-                                            @else
-                                                @if ($now > $item->expired_leave_days)
-                                                    @if ($item->start_date < $now)
-                                                        @if ((!$item->check_in_time && !$item->check_out_time) || ($item->check_in_time && $item->check_out_time))
-                                                            <a href="{{ route('secondCheckIn', $item->id) }}"
-                                                                class="btn light btn-info btn-xs mb-1 btn-block">Check
-                                                                In ({{ $idCodeMaxCount - $item->id_code_count }})</a>
-                                                        @elseif ($item->check_in_time && !$item->check_out_time)
-                                                            <a href="{{ route('secondCheckIn', $item->id) }}"
-                                                                class="btn light btn-info btn-xs mb-1 btn-block">Check
-                                                                Out ({{ $idCodeMaxCount - $item->id_code_count }})</a>
-                                                        @endif
-                                                    @endif
-                                                @endif
-                                            @endif
-                                        @endif --}}
-                                        {{-- <a href="{{ route('member-active.show', $item->id) }}"
-                                            class="btn light btn-info btn-xs mb-1 btn-block">Detail</a> --}}
-                                        {{-- @if ($item->leave_day_status == 'Freeze')
-                                            <a href="{{ route('cuti', $item->id) }}" target="_blank"
-                                                class="btn light btn-secondary btn-xs mb-1 btn-block">Agreement Cuti</a>
-
-                                            <form action="{{ route('stopLeaveDays') }}" method="POST">
-                                                @method('put')
-                                                @csrf
-                                                <input type="hidden" name="member_registration_id"
-                                                    value="{{ $item->id }}">
-                                                <input type="hidden" name="total_days"
-                                                    value="{{ $item->total_days }}">
-                                                <button type="submit"
-                                                    class="btn light btn-outline-secondary btn-xs btn-block mb-1">Hentikan
-                                                    Cuti</button>
-                                            </form>
-                                        @endif --}}
-                                        {{-- Dropdown --}}
                                         <div class="btn-group dropstart" role="group">
                                             <button type="button" class="btn btn-primary btn-xs dropdown-toggle"
                                                 style="width: 100px" data-bs-toggle="dropdown" aria-expanded="false">
@@ -357,21 +318,6 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        {{-- <button type="button" class="btn light btn-light btn-xs mb-1 btn-block"
-                                            data-bs-toggle="modal" data-bs-target=".freeze{{ $item->id }}"
-                                            id="checkInButton">Freeze</button> --}}
-                                        {{-- <a href="{{ route('renewal', $item->id) }}"
-                                            class="btn light btn-dark btn-xs mb-1 btn-block">Renewal</a> --}}
-                                        {{-- @if (Auth::user()->role == 'ADMIN')
-                                            <form action="{{ route('member-active.destroy', $item->id) }}"
-                                                method="POST">
-                                                @method('delete')
-                                                @csrf
-                                                <button type="submit"
-                                                    class="btn light btn-danger btn-xs btn-block mb-1"
-                                                    onclick="return confirm('Delete {{ $item->member_name }} member package ?')">Delete</button>
-                                            </form>
-                                        @endif --}}
                                     </td>
                                 </tr>
                             @endforeach
@@ -407,7 +353,6 @@
                         </div>
                     </div>
                 </div>
-                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" onclick="reloadPage()" class="btn btn-primary">Download</button>
@@ -417,6 +362,51 @@
     </div>
 </div>
 
+<div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Filter Modal</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="GET">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <label class="form-label">Start Date From</label>
+                            <input type="date" name="start_date_from" id="start_date_from" class="form-control" value={{ $startDateFrom }}>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <label class="form-label">Start Date To</label>
+                            <input type="date" name="start_date_to" id="start_date_to" class="form-control"  value={{ $startDateTo}}>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <label class="form-label">Expired Date From</label>
+                            <input type="date" name="expired_date_from" id="expired_date_from" class="form-control" value={{ $expiredDateFrom }}>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <label class="form-label">Expired Date To</label>
+                            <input type="date" name="expired_date_to" id="expired_date_to" class="form-control"  value={{ $expiredDateTo}}>
+                        </div>
+                    </div>
+                </div>                
+                <hr/>
+                <button type="button" class="btn btn-secondary me-2  float-end" data-bs-dismiss="modal">Close</button>      
+                <button type="submit" class="btn btn-primary me-2 float-end" data-bs-dismiss="modal">Filter</button>                     
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 @include('admin.member-registration.check-in')
 @include('admin.member-registration.check-in-2')
